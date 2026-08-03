@@ -44,6 +44,25 @@ open index.html          # macOS — or just double-click the file
 python3 -m http.server   # any static server works too
 ```
 
+## Installing it on an iPhone
+
+The app ships as an installable PWA: a web app manifest, app icons, and a
+service worker that caches the shell so it opens with no connection.
+
+1. **Publish it.** In this repo, go to **Settings → Pages** and set the source
+   to *Deploy from a branch* → `master` → `/ (root)`. GitHub gives you a
+   `https://<user>.github.io/calendar-baner/` URL a minute later. Any HTTPS
+   static host works equally well — the paths are all relative.
+2. **Open that URL in Safari** on the iPhone (it must be Safari; other iOS
+   browsers can't install to the home screen).
+3. **Share → Add to Home Screen.** You get a Prism icon that launches
+   full-screen with no browser chrome, and keeps working offline.
+
+Tasks live in that origin's `localStorage`, so the installed app and the same
+URL in Safari share one list. Serving over HTTPS (or `localhost`) is required —
+a service worker won't register on `file://`, and the app quietly skips
+registration there rather than erroring.
+
 ## Files
 
 | File | Purpose |

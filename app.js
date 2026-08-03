@@ -436,5 +436,15 @@
     if (!document.hidden) render();
   });
 
+  /* Offline support once the app is served over http(s). Opening index.html
+     straight off disk has no service worker scope, so skip it there. */
+  if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js").catch(function () {
+        // Offline caching is a bonus; the app works fine without it.
+      });
+    });
+  }
+
   render();
 })();
