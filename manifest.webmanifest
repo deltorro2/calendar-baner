@@ -1,16 +1,33 @@
 {
+  "id": "/",
   "name": "Prism — Week Calendar",
   "short_name": "Prism",
   "description": "A colorful weekly calendar with a numbered task list for every day.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait",
   "background_color": "#f5f4ff",
   "theme_color": "#6c4cf1",
+  "categories": ["productivity"],
   "icons": [
     { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
     { "src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [
+    {
+      "src": "docs/desktop.png",
+      "sizes": "2880x1240",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "A full week across seven colored day tiles"
+    },
+    {
+      "src": "docs/iphone.png",
+      "sizes": "780x3422",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "The same week as a single column on a phone"
+    }
   ]
 }
