@@ -1,0 +1,14 @@
+# Cloudflare Pages project: the static app plus the /api/sync Function.
+#
+# Fill in database_id after `npm run db:create` — the command prints it.
+# The sync key is a secret and never belongs in this file; set it with
+# `npm run secret` (or in Pages → Settings → Variables and Secrets).
+
+name = "prism-calendar"
+compatibility_date = "2026-08-01"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "prism"
+database_id = "REPLACE_WITH_YOUR_DATABASE_ID"

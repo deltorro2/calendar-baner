@@ -1,0 +1,18 @@
+{
+  "name": "prism-calendar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A colorful week calendar with per-day task lists, synced through Cloudflare Pages + D1.",
+  "scripts": {
+    "dev": "wrangler pages dev .",
+    "deploy": "wrangler pages deploy .",
+    "db:create": "wrangler d1 create prism",
+    "db:init": "wrangler d1 execute prism --remote --file=schema.sql",
+    "db:init:local": "wrangler d1 execute prism --local --file=schema.sql",
+    "db:tasks": "wrangler d1 execute prism --remote --command=\"SELECT day, title, done, deleted FROM tasks ORDER BY day, position\"",
+    "secret": "wrangler pages secret put SYNC_KEY"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

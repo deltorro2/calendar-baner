@@ -1,6 +1,6 @@
 /* Prism service worker — keeps the app openable with no connection.
    Bump CACHE when any shell file changes so old copies are evicted. */
-var CACHE = "prism-v1";
+var CACHE = "prism-v2";
 
 var SHELL = [
   "./",
@@ -40,7 +40,10 @@ self.addEventListener("activate", function (event) {
    offline, and picks up a new version on the visit after one ships. */
 self.addEventListener("fetch", function (event) {
   var request = event.request;
-  if (request.method !== "GET" || new URL(request.url).origin !== self.location.origin) return;
+  var url = new URL(request.url);
+  if (request.method !== "GET" || url.origin !== self.location.origin) return;
+  // Sync traffic must always hit the network — never answer it from cache.
+  if (url.pathname.indexOf("/api/") === 0) return;
 
   event.respondWith(
     caches.match(request).then(function (cached) {

@@ -53,7 +53,35 @@
 
   <footer class="footer">
     <p><strong id="statTotal">0</strong> tasks this week · <strong id="statDone">0</strong> done</p>
-    <button class="footer__clear" id="clearWeek" type="button">Clear week</button>
+
+    <div class="footer__actions">
+      <div class="sync">
+        <button class="sync__btn" id="syncBtn" type="button" aria-expanded="false" aria-controls="syncPanel">
+          <span class="sync__dot" aria-hidden="true"></span>
+          <span id="syncLabel">Sync off</span>
+        </button>
+
+        <section class="sync__panel" id="syncPanel" aria-labelledby="syncPanelTitle" hidden>
+          <h2 class="sync__title" id="syncPanelTitle">Sync across devices</h2>
+          <p class="sync__note">
+            Enter the sync key set on your deployment. Tasks are stored in your
+            own Cloudflare D1 database; the key is kept on this device only.
+          </p>
+          <form class="sync__form" id="syncForm" autocomplete="off">
+            <input class="sync__input" id="syncKey" type="password" placeholder="Sync key"
+                   aria-label="Sync key" autocomplete="off" spellcheck="false" />
+            <button class="sync__connect" type="submit">Connect</button>
+          </form>
+          <div class="sync__row">
+            <button class="sync__link" id="syncNow" type="button">Sync now</button>
+            <button class="sync__link sync__link--danger" id="syncOff" type="button" hidden>Disconnect</button>
+          </div>
+          <p class="sync__status" id="syncStatus">Not connected. Tasks stay on this device.</p>
+        </section>
+      </div>
+
+      <button class="footer__clear" id="clearWeek" type="button">Clear week</button>
+    </div>
   </footer>
 
   <!-- Add-task sheet / dialog -->
